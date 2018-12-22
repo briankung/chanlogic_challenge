@@ -1,32 +1,19 @@
 import React from 'react'
-import inventoryData from '../inventory_data.json'
+import Head from 'next/head'
+
+import INVENTORY_DATA from '../inventory_data.json'
+import InventoryItem from '../lib/inventory_item'
 
 export default class extends React.Component {
-  listifyProperties(item, itemKey) {
-    let itemPropertiesList = [];
-
-    for (const property in item) {
-      itemPropertiesList.push(
-        <li>
-          { property }: { item[property] }
-        </li>
-      )
-    }
-
-    return (
-      <p>
-        { itemPropertiesList }
-      </p>
-    )
-  }
-
   render() {
-    const inventoryList = inventoryData.map(this.listifyProperties);
+    const inventoryList = INVENTORY_DATA.map(
+      item => <InventoryItem { ...item }></InventoryItem>
+    );
 
     return (
       <ol key="list-parent">
         { inventoryList }
       </ol>
-    )
+    );
   }
 }
