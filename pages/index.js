@@ -2,13 +2,29 @@ import React from 'react'
 import inventoryData from '../inventory_data.json'
 
 export default class extends React.Component {
-  render() {
-    const inventoryList = inventoryData.map(
-      (inventoryItem) => <li key="{{ inventoryItem['Amazon ASIN'] }}">{ inventoryItem["Color Name"] }</li>
-    );
+  listifyProperties(item, itemKey) {
+    let itemPropertiesList = [];
+
+    for (const property in item) {
+      itemPropertiesList.push(
+        <li>
+          { property }: { item[property] }
+        </li>
+      )
+    }
 
     return (
-      <ol>
+      <p>
+        { itemPropertiesList }
+      </p>
+    )
+  }
+
+  render() {
+    const inventoryList = inventoryData.map(this.listifyProperties);
+
+    return (
+      <ol key="list-parent">
         { inventoryList }
       </ol>
     )
