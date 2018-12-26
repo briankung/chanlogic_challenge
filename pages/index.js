@@ -1,19 +1,18 @@
 import React from 'react'
 import Head from 'next/head'
 
-import INVENTORY_DATA from '../inventory_data.json'
-import InventoryItem from '../lib/inventory_item'
+import InventoryBody from '../lib/inventory_body'
 
 export default class extends React.Component {
   render() {
-    const inventoryList = INVENTORY_DATA.map(
-      item => <InventoryItem { ...item }></InventoryItem>
-    );
-
     return (
-      <ol key="list-parent">
-        { inventoryList }
-      </ol>
+      <div id="base">
+        <Head>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" />
+        </Head>
+
+        <InventoryBody />
+      </div>
     );
   }
 }
