@@ -4,7 +4,7 @@
 
 Next.js handles routing as well as the build process for ease of development.
 
-`$ npm install --save next react react-dom`
+`$ npm install`
 
 ## Run the next server
 
